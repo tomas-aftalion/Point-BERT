@@ -15,11 +15,6 @@ RUN pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=po
 RUN pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
 
 COPY extensions /home/extensions
-WORKDIR /home/extensions/chamfer_dist
-#RUN python setup.py install --user
-#COPY requirements.txt .
-#RUN pip install -r requirements.txt
-
-
-
-
+COPY install.sh /home
+RUN chmod +x /home/install.sh 
+WORKDIR /home
