@@ -8,12 +8,12 @@
 from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
+extension = CUDAExtension(
+    name='chamfer',
+    sources=['chamfer_cuda.cpp', 'chamfer.cu'],
+)
+
 setup(name='chamfer',
       version='2.0.0',
-      ext_modules=[
-          CUDAExtension('chamfer', [
-              'chamfer_cuda.cpp',
-              'chamfer.cu',
-          ]),
-      ],
+      ext_modules=[extension],
       cmdclass={'build_ext': BuildExtension})
